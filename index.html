@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌿 Waste to Taste - Smart Agriculture Monitor</title>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="./script.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <header>
+            <h1 id="title">Waste to TasteAgriculture Monitoring System</h1>
+            <select id="languageSelect">
+                <option value="en">English</option>
+                <option value="hi">हिन्दी</option>
+                <option value="gu">ગુજરાતી</option>
+            </select>
+        </header>
+        <main>
+            <div class="dashboard-grid">
+                <div class="card weather-card">
+                    <div class="weather-main">
+                        <svg id="weatherIcon" class="icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"></svg>
+                        <div>
+                            <div class="weather-temp" id="weatherTemp">--°</div>
+                            <div class="weather-desc" id="weatherDesc">Waiting for data...</div>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div><div class="label" id="feelsLikeLabel">Feels Like</div><div class="value" id="weatherFeelsLike">--°</div></div>
+                        <div><div class="label" id="humidityLabel">Humidity</div><div class="value" id="weatherHumidity">--%</div></div>
+                        <div><div class="label" id="windLabel">Wind</div><div class="value" id="weatherWind">-- km/h</div></div>
+                    </div>
+                </div>
+                <div class="card" id="tempCard">
+                    <div class="card-header">
+                        <span class="iconify" data-icon="mdi:thermometer-water" style="color: var(--accent-temp); font-size: 32px;"></span>
+                        <h2 id="waterTempHeader">Water Temperature</h2>
+                    </div>
+                    <div class="value-container">
+                        <div class="value" id="tempValue">--</div>
+                        <div class="unit">°C</div>
+                        <div class="alert" id="tempAlert"></div>
+                    </div>
+                </div>
+                <div class="card" id="phCard">
+                    <div class="card-header">
+                        <span class="iconify" data-icon="mdi:beaker-outline" style="color: var(--accent-ph); font-size: 32px;"></span>
+                        <h2 id="waterPhHeader">Water pH Level</h2>
+                    </div>
+                    <div class="value-container">
+                        <div class="value" id="phValue">--</div>
+                        <div class="unit">pH</div>
+                        <div class="alert" id="phAlert"></div>
+                    </div>
+                </div>
+                <div class="card" id="moistureCard">
+                    <div class="card-header">
+                        <span class="iconify" data-icon="mdi:water-percent" style="color: var(--accent-wind); font-size: 32px;"></span>
+                        <h2 id="soilMoistureHeader">Soil Moisture</h2>
+                    </div>
+                    <div class="value-container">
+                        <div class="value" id="moistureValue">--</div>
+                        <div class="unit">%</div>
+                        <div class="alert" id="moistureAlert"></div>
+                    </div>
+                </div>
+                <div class="card" id="pumpCard">
+                    <div class="card-header">
+                        <span class="iconify" data-icon="mdi:pump" style="color: var(--accent-secondary); font-size: 32px;"></span>
+                        <h2 id="pumpControlHeader">Pump Control</h2>
+                    </div>
+                    <div class="value-container">
+                        <label class="switch">
+                            <input type="checkbox" id="pumpSwitch">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="charts-wrapper">
+                <div class="chart-container"><canvas id="tempChart"></canvas></div>
+                <div class="chart-container"><canvas id="phChart"></canvas></div>
+            </div>
+        </main>
+        <footer id="footer">Waste to Taste | Real-Time Clean Agriculture Monitoring System</footer>
+    </div>
+
+    <div class="bot-container" id="botContainer">
+        <div class="bot-log-tooltip" id="botLogTooltip"></div>
+        <div class="bot-message" id="botMessage"></div>
+        <div class="bot-avatar" id="botAvatar">
+            <span class="iconify" data-icon="mdi:robot" style="color: #ffffff; font-size: 32px;"></span>
+        </div>
+    </div>
+</body>
+</html>
+
+
