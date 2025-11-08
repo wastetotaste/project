@@ -6,7 +6,7 @@ import websockets
 import aiohttp
 
 SIMULATE = False  # Set to True for simulation mode, False for real serial data
-SERIAL_PORT = 'COM6'      # Replace with your actual HC-05 COM port
+SERIAL_PORT = 'COM11'      # Replace with your actual HC-05 COM port
 BAUD_RATE = 9600
 WEATHER_API_URL = "https://api.open-meteo.com/v1/forecast"
 LAT = 21.1702  # Latitude for Surat
