@@ -358,7 +358,6 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.waterTempHeader.innerText = trans.waterTemperature;
         elements.waterPhHeader.innerText = trans.waterPhLevel;
         elements.soilMoistureHeader.innerText = trans.soilMoisture;
-        elements.pumpControlHeader.innerText = trans.pumpControl;
         tempChart.options.scales.x.title.text = trans.time;
         tempChart.options.scales.y.title.text = `${trans.waterTemperature} (°C)`;
         tempChart.data.datasets[0].label = `${trans.waterTemperature} (°C)`;
@@ -448,8 +447,6 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.phAlert.textContent = ph < 4.5 ? trans.phAcidic : ph > 7.5 ? trans.phAlkaline : '';
         elements.moistureCard.classList.toggle('card--alert', moisture < 20 || moisture > 80);
         elements.moistureAlert.textContent = moisture < 20 ? trans.moistureTooLow : moisture > 80 ? trans.moistureTooHigh : '';
-        
-        updateBotLogic({ ...data, pumpIsOn: elements.pumpSwitch.checked });
     };
 
     const throttledUpdateUI = throttle(updateUI, 1000);
@@ -475,7 +472,6 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         ws.onclose = () => { console.log('WebSocket disconnected, reconnecting...'); setTimeout(connectWebSocket, 5000); };
         ws.onerror = (error) => console.error('WebSocket error:', error);
-        elements.pumpSwitch.onchange = () => { if (ws && ws.readyState === WebSocket.OPEN) { ws.send(elements.pumpSwitch.checked ? 'ON' : 'OFF'); } };
     }
     
     elements.botAvatar.addEventListener('click', () => elements.botLogTooltip.classList.toggle('visible'));
