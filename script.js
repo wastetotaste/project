@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const throttledUpdateUI = throttle(updateUI, 1000);
 
     function connectWebSocket() {
-        const ws = new WebSocket('ws://172.20.10.2:6789');
+        const ws = new WebSocket('https://8q44cpw9-6789.inc1.devtunnels.ms/');
         ws.onopen = () => console.log('WebSocket connected');
         ws.onmessage = (event) => {
             const data = event.data.split(',');
